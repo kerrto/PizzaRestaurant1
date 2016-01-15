@@ -9,18 +9,19 @@
 #import <Foundation/Foundation.h>
 
 #import "Kitchen.h"
+#import "Pizza.h"
+
 
 int main(int argc, const char * argv[])
 {
-
+    
     @autoreleasepool {
         
         NSLog(@"Please pick your pizza size and toppings:");
         
-        Kitchen *restaurantKitchen = [Kitchen new];
+        Kitchen *restaurantKitchen = [[Kitchen alloc] init];
         
         while (TRUE) {
-            // Loop forever
             
             NSLog(@"> ");
             char str[100];
@@ -31,12 +32,20 @@ int main(int argc, const char * argv[])
             
             NSLog(@"Input was %@", inputString);
             
-            // Take the first word of the command as the size, and the rest as the toppings
             NSArray *commandWords = [inputString componentsSeparatedByString:@" "];
             
-            // And then send some message to the kitchen...
+            NSString *sizeString = commandWords[0];
+            
+            
+            PizzaSize pizzaSize = [Pizza pizzaSizeEnumFromString:sizeString];
+            
+            NSMutableArray *toppingsArray = [commandWords mutableCopy];
+            [toppingsArray removeObjectAtIndex:0];
+            
+            Pizza *pizza = [restaurantKitchen makePizzaWithSize:pizzaSize toppings:toppingsArray];
+            NSLog(@"%@", pizza);
         }
-
+        
     }
     return 0;
 }
