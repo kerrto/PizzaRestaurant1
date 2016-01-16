@@ -12,11 +12,39 @@
 
 @implementation Kitchen
 
+
+
+
 - (Pizza *)makePizzaWithSize:(PizzaSize)size toppings:(NSArray *)toppings
 {
-    Pizza *newPizza = [[Pizza alloc] initWithPizzaSize:size toppings:toppings];
     
+    if (!self.delegate) {
+        return nil; }
+    
+    
+        BOOL shouldUpsize = [self.delegate kitchenShouldUpgradeOrder:self];
+        
+        PizzaSize newSize = size;
+        
+        if (shouldUpsize) {
+            newSize = Large;
+        }
+    
+    
+    Pizza *newPizza = [[Pizza alloc] initWithPizzaSize:newSize toppings:toppings];
+    
+    
+    BOOL respondsToDidMakePizza = [self.delegate respondsToSelector:@selector(kitchenDidMakePizza:)];
+    
+    if (respondsToDidMakePizza) {
+        [self.delegate kitchenDidMakePizza:newPizza];
+    }
+ 
     return newPizza;
 }
+
+
+
+
 
 @end
