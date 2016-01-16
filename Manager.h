@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Kitchen.h"
+#import "Pizza.h"
 
 @interface Manager : NSObject <KitchenDelegate>
 

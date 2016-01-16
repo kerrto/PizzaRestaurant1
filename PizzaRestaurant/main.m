@@ -20,7 +20,8 @@ int main(int argc, const char * argv[])
     
     @autoreleasepool {
         
-        NSLog(@"Please pick your pizza size and toppings:");
+        while (TRUE) {
+        
         
         Kitchen *restaurantKitchen = [[Kitchen alloc] init];
         
@@ -31,7 +32,7 @@ int main(int argc, const char * argv[])
        
         InputCollector *mainInputCollector = [[InputCollector alloc]init];
         
-        NSString *menuInput = @"Which manager would you like to have?(please type)\n bad manager\n nice manager\n no manager\n";
+        NSString *menuInput = @"Which manager would you like to have?(please type)\n bad manager\n nice manager\n no manager\n exit\n";
         
         NSString *userInput = [mainInputCollector inputForPrompt:menuInput];
         
@@ -40,17 +41,13 @@ int main(int argc, const char * argv[])
         
         if ([userInput isEqualToString:@"nice manager"]) {
             restaurantKitchen.delegate =niceManager;}
-        
-        
-        while (TRUE) {
-            
-            NSLog(@"> ");
+        if ([userInput isEqualToString:@"exit"]) {
+                return FALSE;}
+      
+            NSLog(@"Please enter your order like this: small pepperoni cheese");
             char str[100];
             fgets (str, 100, stdin);
-            
-            NSLog(@"Which manager would you like to have?\n");
-            
-            
+
             
             
             NSString *inputString = [[NSString alloc] initWithUTF8String:str];
@@ -69,11 +66,9 @@ int main(int argc, const char * argv[])
             [toppingsArray removeObjectAtIndex:0];
             
             NSString *pizzaSizeString = [[NSString alloc] init];
-            NSString *madePizzaSizeString = [[NSString alloc] init];
             
             Pizza *pizza = [restaurantKitchen makePizzaWithSize:pizzaSize toppings:toppingsArray];
-            NSLog(@"%@", pizza);
-            NSLog(@"Here's your %@ pizza with %@",madePizzaSizeString,toppingsArray);
+         
             
         }
         

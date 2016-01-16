@@ -68,16 +68,6 @@
 }
 
 
--(NSString*)madePizzaSizeString {
-    if (_pizzaSize==Small){
-        return @"Small";}
-        if (_pizzaSize==Medium) {
-            return @"Medium"; }
-    if (_pizzaSize==Large) {
-        return @"Large";}
-    else {return @"Small";}
-}
-
 
 
 

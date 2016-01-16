@@ -8,18 +8,20 @@
 
 #import "Manager.h"
 #import "Pizza.h"
+#import "Kitchen.h"
+
+
 
 @implementation Manager
 
 -(BOOL)kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSize)size andToppings:(NSArray *)toppings{
     
-    if ([toppings containsObject:@"anchovies"]) {
-        NSLog(@"Achovies are gross, either get out or order again");;
-        return NO;
-    }
-    return YES;
-    
-}
+    BOOL doesToppingsContainAnchovies = [toppings containsObject:@"anchovies"];
+    if (doesToppingsContainAnchovies) {
+        NSLog(@"Achovies are gross, either get out or order again");
+    return NO;}
+    return YES;}
+
 
 -(BOOL)kitchenShouldUpgradeOrder:(Kitchen *)kitchen {
     return NO;
