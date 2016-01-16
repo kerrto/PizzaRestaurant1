@@ -14,6 +14,7 @@
 -(BOOL)kitchen:(Kitchen *)kitchen shouldMakePizzaOfSize:(PizzaSize)size andToppings:(NSArray *)toppings{
     
     if ([toppings containsObject:@"anchovies"]) {
+        NSLog(@"Achovies are gross, either get out or order again");;
         return NO;
     }
     return YES;

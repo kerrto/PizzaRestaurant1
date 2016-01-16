@@ -41,13 +41,6 @@ int main(int argc, const char * argv[])
         if ([userInput isEqualToString:@"nice manager"]) {
             restaurantKitchen.delegate =niceManager;}
         
-        if ([userInput isEqualToString:@"no manager"]) {
-            restaurantKitchen.delegate=nil;}
-        
-        else {
-            restaurantKitchen.delegate=nil;
-        }
-        
         
         while (TRUE) {
             
@@ -75,8 +68,12 @@ int main(int argc, const char * argv[])
             NSMutableArray *toppingsArray = [commandWords mutableCopy];
             [toppingsArray removeObjectAtIndex:0];
             
+            NSString *pizzaSizeString = [[NSString alloc] init];
+            NSString *madePizzaSizeString = [[NSString alloc] init];
+            
             Pizza *pizza = [restaurantKitchen makePizzaWithSize:pizzaSize toppings:toppingsArray];
             NSLog(@"%@", pizza);
+            NSLog(@"Here's your %@ pizza with %@",madePizzaSizeString,toppingsArray);
             
         }
         

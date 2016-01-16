@@ -11,7 +11,8 @@
 
 @interface Manager2 : NSObject <KitchenDelegate>
 
+-(int)upGradeOrder:(Pizza *)PizzaSize;
 
-
+@property (nonatomic) NSString *sizeString;
 
 @end
