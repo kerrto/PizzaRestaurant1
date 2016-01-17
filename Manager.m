@@ -20,7 +20,8 @@
     if (doesToppingsContainAnchovies) {
         NSLog(@"Achovies are gross, either get out or order again");
     return NO;}
-    return YES;}
+        return YES;
+}
 
 
 -(BOOL)kitchenShouldUpgradeOrder:(Kitchen *)kitchen {
