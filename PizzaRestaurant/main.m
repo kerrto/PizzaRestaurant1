@@ -37,12 +37,15 @@ int main(int argc, const char * argv[])
         NSString *userInput = [mainInputCollector inputForPrompt:menuInput];
         
         if([userInput isEqualToString:@"bad manager"]) {
-            restaurantKitchen.delegate = badManager;}
+            restaurantKitchen.delegate = badManager;
+        }
         
         if ([userInput isEqualToString:@"nice manager"]) {
-            restaurantKitchen.delegate =niceManager;}
+            restaurantKitchen.delegate =niceManager;
+        }
         if ([userInput isEqualToString:@"exit"]) {
-                return FALSE;}
+                return FALSE;
+        }
       
             NSLog(@"Please enter your order like this: small pepperoni cheese");
             char str[100];
